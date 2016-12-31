@@ -1,0 +1,12 @@
+sudo: required
+language: python
+python:
+  - "3.5"
+services:
+  - docker
+install:
+  - docker pull jfloff/alpine-python:latest-slim
+  - docker build -t roster-bot .
+  - docker run -td roster-bot python3 run.py --dev
+script:
+  - docker ps | grep roster-bot

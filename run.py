@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import argparse
-
+import os
 import discord
 import asyncio
 
@@ -8,11 +8,9 @@ from commands.roster import print_roster as pr
 
 # Development Constants
 DEV_BOT_NAME = "Fupabot-Dev"
-DEV_BOT_KEY = "MjY0NjE0OTUxMzIxMjA2Nzk2.C0jnNA.nkWXSZM2DKtkfLDBfuTSfHpzYzc"
 
 # Production Constants
-PRODUCTION_BOT_NAME = "Fupabot"
-PRODUCTION_BOT_KEY = "MjY0NjE0MDM3NzY4MjQxMTUz.C0jnDw.fVnPqHfJSx5BuLS5CM6XzA_14XA"
+PRODUCTION_BOT_NAME = "Fupabot"=
 
 client = discord.Client()
 
@@ -59,8 +57,8 @@ if __name__ == "__main__":
     client.accept_invite('https://discord.gg/mM5fXCe')
 
     if args.dev:
-        client.run(DEV_BOT_KEY)
+        client.run(os.environ['ROSTER_BOT_DEVELOPMENT_TOKEN'])
     elif args.prod:
-        client.run(PRODUCTION_BOT_KEY)
+        client.run(os.environ['ROSTER_BOT_PRODUCTION_TOKEN'])
     else:
         print("RIP in peace.")

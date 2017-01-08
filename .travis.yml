@@ -1,12 +1,16 @@
 sudo: required
 language: python
 python:
-  - "3.5"
+  - '3.5'
 services:
   - docker
 install:
   - docker pull jfloff/alpine-python:latest-slim
   - docker build -t roster-bot .
-  - docker run -td roster-bot python3 run.py --dev
+  - docker run -td -e ROSTER_BOT_DEVELOPMENT_TOKEN -e ROSTER_BOT_PRODUCTION_TOKEN roster-bot python3 run.py --dev
 script:
   - docker ps | grep roster-bot
+env:
+  global:
+    - secure: iybNmtWBzVHTNxOmfPBlK2rNkk3oie0mHK9cpHBuZ23Iefx9H/8qoGoIjiElbe6G3fBSkibFLqgk415LpCet7bm926OHFdeFzOgUeX34pOSv1VpiB3dxnWu6P4ort2nzhmNb0lAWeRNTQ6gmLDW6mNru4TI5SUBWcgx+A/wrCHkorpeRmxmcfJck5zCCKNaI0JNlfbuKXNpDIthMYzVVjS3ukbkqjlOZ1MRI8F5Hhgt1E1XPwv4ab4U1OeVZsJIjbsmauMExhZy0LGOe/pRiACIDC8ouEDQhBZoH49dnLuwPff2qY8B58TL78WoPf9NA8p0TAxkKPceNyBxvsWj5ZL8+VstDQys+EdKFyTadt8E8xvVxVDvh646mZubBCR/588BGpL7u9tB098InLxHqvi/+yxOUljpFgJ4Ty8Mo/LzJydVvLkTW6Db4GFtJj4L2MDuGm7kXqkUb8GXWtzFZ3Ra7TmYoi8/+ou96DHJxHuiGNDntOe8w5LTz0lKWRnacUUdJMz0oSHXe4SjXIpKtqVV0F/QYSohsBzyUwrlhI8YDQyYNQ990P7fa40m1WKYeK6S9+kJrrFN29XaRC7PbLhdQJmxeptsC2qufZVyXMxsLbs36U9McrQoafivVo04NavYovpePeXPn4lk0rmyZ/EG9kE9VWYL1Z21d8qnx3pg=
+    - secure: BxsEdiVknBadslSGgr1ca7t7MXM4di4SnsXuzILlExuoFKPxSnfOQuNIuAO5W5RuU0wENoZYNbmjyIGzzPzORWzZNsKoJ+McUqqtBQqmBLkWMlgNCyNNvfvxRuEx1K1KiPqbJQVKf22zE6LVzTF0FAFToVazW9jZNbPa4+zojXa+jW1Y7wZ+prpl//et5wlJeAdN6og4AaWg22KkjtYgzvAqcAP/HNaoW39L175xvQo9bObn66dIxcJ8RUX6DGyXBYqVD9V1g61Ehut/vGaN734I+Am63OeTgO/YPaO03F23kexSWPWXu95r0ta0DGTE/1GmGb21i6kHacDRgRAW2vrTjjwJruN+YrdV420p1blJ+4hYvKwPWi5BqCjqGccRY4nnUHxuyg7r5t5/v0sNabJnGf0vJp3VXageCxTWR025OSrNemK3sXL7//P/buZ8h1uudGvTttpvGcJ3zTk0Y0BJK99W3DU+F6GNno/sjFbCTm63517dfidVO0P0jEivLGfAF0q73zGyh0fjxU/q6mEDdm7EoP+XYku/QrA/HcDBT4Ix9ZJdnCVJvnDS5nZYxSl5WNXd92VJnH1AejvmHIpiHCYVSUKRXmOjLIPWbrPYBRBSSwkKo1sCow/tWJ8zbbQyjIfo1ndiFbh4eTyKhPQKWdmi47bsBhhi65d3cxY=

@@ -1,5 +1,4 @@
 from texttable import Texttable
-
 from google.sheets import get_roster
 
 async def print_roster(client, message):
